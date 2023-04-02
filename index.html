@@ -122,6 +122,11 @@
           height = messageEl.getBoundingClientRect().bottom; // No .height in IE8, but top is assumed to be 0
           mapEl.style.top = height.toString() + 'px';
         }
+        
+        // Adding a script block to post message to the parent container (think iframed demos)
+    window.addEventListener('hashchange', function () {
+      parent.postMessage(window.location.hash, '*')
+    });
       })();
     </script>
   </body>
